@@ -1,0 +1,31 @@
+\documentclass{DEIthesis}
+
+\title{Title of Thesis}
+\author{Your Name}
+\studentId{123456789}
+\advisor{Prof. Advisor Name}
+\university{University of Padua}
+\mastername{Computer Engineering}
+\academicYear{2024/2025}
+
+\usepackage{graphicx}
+\usepackage{lipsum} % for filler text; remove in real use
+
+\begin{document}
+
+\frontmatter
+\maketitle
+
+\input{frontmatter/abstract}
+\input{frontmatter/thanks}
+
+\tableofcontents
+\mainmatter
+
+\input{chapters/01_introduction}
+\input{chapters/02_conclusion}
+
+\bibliographystyle{plain}
+\bibliography{bibliography}
+
+\end{document}
