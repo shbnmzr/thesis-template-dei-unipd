@@ -36,6 +36,12 @@
 \RequirePackage{titlesec}
 \RequirePackage{xcolor}
 \RequirePackage{adjustbox}
+\RequirePackage{booktabs} 
+\RequirePackage[backend=biber]{biblatex}
+\addbibresource{references.bib}
+\RequirePackage{listings}
+
+
 
 %% Define UniPD Red
 \definecolor{UniPDColor}{RGB}{155, 0, 20}
@@ -117,14 +123,14 @@
 
   \begin{center}
     \vspace*{1.5cm}
-    {\normalsize\textsc{Master Thesis in \@mastername}} \\[3ex]
+    {\normalsize\textsc{Master's Thesis in \@mastername}} \\[3ex]
     {\begin{spacing}{1.6}\LARGE\bfseries \@title\end{spacing}} \\[10ex]
   \end{center}
 
   \begin{center}
     \begin{tabular}{p{0.45\textwidth} p{0.45\textwidth}}
       \raggedright \begin{spacing}{1}\large Master Candidate\end{spacing} \\
-      \begin{spacing}{1}\textbf{\Large \@author}\end{spacing} \\ \raggedright \large \@studentId &
+      \begin{spacing}{1}\textbf{\Large \@author}\end{spacing} \\ \raggedright \large Student ID: \@studentId &
       \raggedleft \begin{spacing}{1}\large Advisor\end{spacing} \\
       \raggedleft \textbf{\Large \@advisor}
     \end{tabular}
@@ -139,6 +145,61 @@
   \null
   \restoregeometry
 }
+
+%% ---- BACKMATTER ----
+\renewcommand{\backmatter}{
+  \cleardoublepage
+  \phantomsection
+
+  % add references
+  \addcontentsline{toc}{chapter}{\bibname}
+  \printbibliography
+
+  \cleardoublepage
+  \phantomsection
+
+  % add acknowledgments
+  \addcontentsline{toc}{chapter}{\acknowledgmentsname}
+  \acknowledgments
+
+  \cleardoublepage
+  \phantomsection
+
+  % start appendices
+  \appendix
+}
+
+% -- CODE SNIPPETS --
+
+% Colors for code snippets highlights
+\definecolor{commentsColor}{RGB}{36, 161, 156}
+\definecolor{numColor}{RGB}{71, 96, 114}
+\definecolor{stringColor}{RGB}{205, 63, 62}
+\definecolor{kwColor}{RGB}{248, 6, 204}
+\definecolor{bgCodeColor}{RGB}{255, 249, 249}
+
+% Style of code snippets
+\lstdefinestyle{codeSnippet} {
+  backgroundcolor=\color{bgCodeColor},
+  commentstyle=\color{commentsColor},
+  keywordstyle=\color{kwColor},
+  numberstyle=\tiny\color{numColor},
+  stringstyle=\color{stringColor},
+  basicstyle=\ttfamily\footnotesize,
+  breakatwhitespace=false,         
+  breaklines=true,                 
+  captionpos=b,                    
+  keepspaces=true,                 
+  numbers=left,                    
+  numbersep=5pt,                  
+  showspaces=false,                
+  showstringspaces=false,
+  showtabs=false,                  
+  tabsize=2
+}
+
+\lstset{style=codeSnippet}
+
 
 %% Prevent unwanted blank pages while keeping page numbers
 \makeatletter

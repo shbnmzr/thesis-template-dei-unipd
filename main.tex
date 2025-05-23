@@ -9,7 +9,7 @@
 \academicYear{2024/2025}
 
 \usepackage{graphicx}
-\usepackage{lipsum} % for filler text; remove in real use
+\usepackage{lipsum}
 
 \begin{document}
 
@@ -25,7 +25,14 @@
 \input{chapters/01_introduction}
 \input{chapters/02_conclusion}
 
-\bibliographystyle{plain}
-\bibliography{bibliography}
+\backmatter
+
+\chapter{Appendix 1}
+\label{app:appendix1}
+\input{appendices/appendix1}
+
+\chapter{Code Appendix}
+\label{app:code}
+\input{appendices/code_listings}
 
 \end{document}
