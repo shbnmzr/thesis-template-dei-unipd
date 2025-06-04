@@ -71,6 +71,8 @@
   {0ex}
   {\bfseries\scshape}
 
+\titleformat{\paragraph}[block]{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+
 %% Fancyhdr Setup
 \pagestyle{fancy}
 \fancyhf{}
