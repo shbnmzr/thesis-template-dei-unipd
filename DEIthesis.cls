@@ -40,6 +40,7 @@
 \RequirePackage[backend=biber]{biblatex}
 \addbibresource{references.bib}
 \RequirePackage{listings}
+\RequirePackage{acronym}
 
 
 
