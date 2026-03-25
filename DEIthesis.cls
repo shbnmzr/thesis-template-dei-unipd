@@ -1,5 +1,5 @@
 %% DEIthesis.cls
-%% Cleaned-up LaTeX class for a Master's Thesis at University of Padua, DEI
+%% LaTeX class for a Master's Thesis at University of Padua, DEI
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{DEIthesis}[2025 DEI Thesis Class]
@@ -41,6 +41,12 @@
 \addbibresource{references.bib}
 \RequirePackage{listings}
 \RequirePackage{acronym}
+\usepackage{tikz} 
+\usepackage{times}
+\usepackage{pgfplots}
+\usepackage{rotating}
+
+
 
 
 
@@ -72,8 +78,6 @@
   {0ex}
   {\bfseries\scshape}
 
-\titleformat{\paragraph}[block]{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
-
 %% Fancyhdr Setup
 \pagestyle{fancy}
 \fancyhf{}
@@ -90,6 +94,8 @@
 \def\university#1{\gdef\@university{#1}}
 \def\mastername#1{\gdef\@mastername{#1}}
 \def\academicYear#1{\gdef\@academicYear{#1}}
+\def\graduationDate#1{\gdef\@graduationDate{#1}}
+
 
 \renewcommand{\maketitle} {
   \newgeometry{
@@ -126,23 +132,31 @@
 
   \begin{center}
     \vspace*{1.5cm}
-    {\normalsize\textsc{Master's Thesis in \@mastername}} \\[3ex]
+    {\normalsize\textsc{Department of Information Engineering}} \\[3ex]
+    {\normalsize\textsc{Master's Degree in \@mastername}} \\[3ex]
     {\begin{spacing}{1.6}\LARGE\bfseries \@title\end{spacing}} \\[10ex]
   \end{center}
 
-  \begin{center}
-    \begin{tabular}{p{0.45\textwidth} p{0.45\textwidth}}
-      \raggedright \begin{spacing}{1}\large Master Candidate\end{spacing} \\
-      \begin{spacing}{1}\textbf{\Large \@author}\end{spacing} \\ \raggedright \large Student ID: \@studentId &
-      \raggedleft \begin{spacing}{1}\large Advisor\end{spacing} \\
-      \raggedleft \textbf{\Large \@advisor}
-    \end{tabular}
-  \end{center}
+\begin{center}
+  \begin{tabular}{p{0.45\textwidth} p{0.45\textwidth}}
+    % Advisor (left-aligned)
+    \raggedright
+    \begin{spacing}{1}\large Supervisor\end{spacing} \\
+    \textbf{\Large \@advisor}
+    &
+    % Student (right-aligned)
+    \raggedleft
+    \begin{spacing}{1}\large Candidate\end{spacing} \\
+    \textbf{\Large \@author} \\[0.8em]
+    \large Student ID: \@studentId 
+  \end{tabular}
+\end{center}
 
   \vfill
   \begin{center}
-    {\normalsize \@university} \\[4ex]
-    {\large \@academicYear}
+    % {\normalsize \@university} \\[4ex]
+    {\large \@academicYear} \\[4ex]
+    {\large \@graduationDate} \\[4ex]
   \end{center}
 
   \null
